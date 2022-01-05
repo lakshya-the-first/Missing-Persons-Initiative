@@ -1,0 +1,86 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <sstream>
+
+using namespace std;
+
+class Victims_fam{
+	string f_name, l_name, s_colour; int height; float number;
+	public: 
+		Victims_fam();
+		Victims_fam(string new_f, string new_l, string new_s, int new_h , float new_num):
+			f_name(new_f), l_name(new_l), s_colour(new_s), height(new_h) , number(new_num){
+			}
+		void print();
+};
+
+void Victims_fam::print(){
+	cout << endl << "The information you provided for the last submission was: " << endl;
+	cout << "Name: " << f_name << " " << l_name << endl;
+	cout << "Skin Complexion: " << s_colour << endl;
+	cout << "Height: " << height << endl;
+	cout << "Contact Information: " << number << endl;
+}
+
+void print_title(){
+	cout << "Welcome to the Match & Location Information Database" << endl;
+	cout << "Please enter an individual's description to help Emergency Service identify an individual" << endl << endl;
+}
+
+void input(string& first_name, string& last_name, string& skin, int& height , float& cell){
+	cout << "First Name: ";
+		cin >> first_name;
+	cout << "Last Name: ";
+		cin >> last_name;
+	cout << "Skin Complexion: ";
+		cin >> skin;
+	cout << "Height (in centimetres): ";
+		cin >> height;
+	cout << "Contact Information (Phone Number with no spaces): ";
+		cin >> cell;
+}
+
+void end_sub(){
+	cout << endl << "Thank you for your submission. We will contact you as soon as possible." << endl;
+}
+
+ifstream myfile ("ES_input.txt");
+vector<string> result;
+
+int main (){
+	string first_name, last_name, skin; 
+	int height, A = 1; float cell; 
+	char more;
+	print_title();
+			more_sub:
+	input(first_name, last_name, skin, height , cell);
+
+	Victims_fam vA (first_name, last_name, skin, height , cell);
+		cout << endl << "Would you like to submit another application? ('Y' = yes, 'N' = no)";
+			cin >> more;
+
+	if (more == 'Y' && 'y'){
+		A++;
+		goto more_sub;
+	}
+	end_sub();
+	
+	string str;
+	
+	while(getline(myfile,str)){
+		
+		stringstream s_stream(str);
+		string first, last, skin; int height;
+		
+		s_stream >> first >> last >> skin >> height;
+		
+		cout << "First: " << first << endl;
+		cout << "Last: " << last << endl;
+		cout << "Skin: " << skin << endl;
+		cout << "Height: " << height << endl;
+		
+   }
+	
+}
