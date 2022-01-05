@@ -1,0 +1,2 @@
+# Missing-Persons-Initiative
+This was a hackathon project that my team and I created at StarterHacks in Jan 2020. This project was build for Toronto Police Services and other emergency services in the Greater Toronto Area. Its purpose was to help minimize the 911 caller traffic during times of crisis by allowing the public to submit missing person reports online and helping emergency services identify individuals that they find. 
